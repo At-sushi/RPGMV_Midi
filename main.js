@@ -4,6 +4,8 @@
 const PicoAudio = require('picoaudio');
 const picoAudio = new PicoAudio();
 picoAudio.init();
+// ループ再生設定
+picoAudio.setLoop(true);
 
 // コアシステムが曲を止めたら自分も止める
 const _stopBgm = AudioManager.stopBgm;
