@@ -19,4 +19,4 @@ npm run build
 
 ## Contribution
 
-All type of PRs are acceptable.
+All types of PRs are acceptable.

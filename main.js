@@ -27,6 +27,7 @@ Game_Interpreter.prototype.pluginCommand = function(command, args) {
                 break;
 
             case 'pause':
+            case 'stop':
                 pause();
         }
     }
@@ -49,9 +50,9 @@ function play(filePath) {
             const smfData = new Uint8Array(request.response);
             const parsedData = picoAudio.parseSMF(smfData);
 
-            // ループ再生する
+            // SMFデータを読み込んで再生
             picoAudio.setData(parsedData);
-            picoAudio.play(true);
+            picoAudio.play();
         }
     }.bind(this);
     request.send();
