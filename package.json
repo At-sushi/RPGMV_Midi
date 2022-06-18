@@ -1,0 +1,18 @@
+{
+  "name": "rpgmv_midi",
+  "version": "0.1.0",
+  "description": "RPGMV Plugin for Midi playing",
+  "main": "main.js",
+  "dependencies": {
+    "picoaudio": "^1.1.0"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0"
+  },
+  "scripts": {
+    "build": "browserify main.js -o dist/ATS_MidiMapper.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "At-sushi",
+  "license": "ISC"
+}
