@@ -1,8 +1,12 @@
 {
   "name": "rpgmv_midi",
   "version": "0.1.0",
-  "description": "RPGMV Plugin for Midi playing",
+  "description": "RPGMV Plugin dedicated for Midi playing",
   "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/At-sushi/RPGMV_Midi.git"
+  },
   "dependencies": {
     "picoaudio": "^1.1.0"
   },

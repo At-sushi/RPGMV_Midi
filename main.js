@@ -1,7 +1,8 @@
 'use strict';
 
 // 初期化
-const picoAudio = require('picoaudio');
+const PicoAudio = require('picoaudio');
+const picoAudio = new PicoAudio();
 picoAudio.init();
 
 // コアシステムが曲を止めたら自分も止める
@@ -15,9 +16,9 @@ AudioManager.stopBgm = function() {
 // コマンドー
 const _pluginCommand = Game_Interpreter.prototype.pluginCommand;
 Game_Interpreter.prototype.pluginCommand = function(command, args) {
-    _pluginCommand.call(this);
+    const ret = _pluginCommand.apply(command, args);
 
-    if (command == 'MV_Midi') {
+    if (command == 'ATS_MidiMapper') {
         switch (args[0]) {
             case 'play':
                 play(args[1]);
@@ -27,6 +28,8 @@ Game_Interpreter.prototype.pluginCommand = function(command, args) {
                 pause();
         }
     }
+
+    return ret;
 };
 
 function play(filePath) {
@@ -41,7 +44,7 @@ function play(filePath) {
     request.responseType = 'arraybuffer';
     request.onload = function() {
         if (request.status == 200 || request.status == 304) {
-            const smfData = request.response;
+            const smfData = new Uint8Array(request.response);
             const parsedData = picoAudio.parseSMF(smfData);
 
             // ループ再生する
