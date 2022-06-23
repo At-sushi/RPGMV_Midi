@@ -4,9 +4,9 @@ RPG Maker MV Plugin which can play MIDI.
 
 ## Dependencies
 
-Required Node.js and npm installed.
+Required npm installed.
 
-This package uses browserify and PicoAudio.
+This package uses browserify and PicoAudio.js.
 
 ## Build
 

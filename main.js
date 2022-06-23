@@ -45,8 +45,9 @@ function play(filePath) {
     const request = new XMLHttpRequest();
     request.open('GET', url);
     request.responseType = 'arraybuffer';
-    request.onload = function() {
-        if (request.status == 200 || request.status == 304) {
+    request.onreadystatechange = function() {
+        if (request.readyState == 4 &&
+            (request.status == 200 || request.status == 304)) {
             const smfData = new Uint8Array(request.response);
             const parsedData = picoAudio.parseSMF(smfData);
 
@@ -55,7 +56,7 @@ function play(filePath) {
             picoAudio.play();
         }
     }.bind(this);
-    request.send();
+    request.send(null);
 }
 
 function pause() {
