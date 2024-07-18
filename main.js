@@ -15,12 +15,20 @@ AudioManager.stopBgm = function() {
     picoAudio.pause();
 };
 
+// マスターボリューム反映
+const _setBGMVolume = AudioManager.updateBgmParameters;
+AudioManager.updateBgmParameters = function(value) {
+    _setBGMVolume.call(this, value);
+
+    picoAudio.setMasterVolume(AudioManager.bgmVolume / 100);
+};
+
 // コマンドー
 const _pluginCommand = Game_Interpreter.prototype.pluginCommand;
 Game_Interpreter.prototype.pluginCommand = function(command, args) {
     const ret = _pluginCommand.apply(command, args);
 
-    if (command == 'ATS_MidiMapper') {
+    if (command == 'ATS_Midi') {
         switch (args[0]) {
             case 'play':
                 play(args[1]);
@@ -29,6 +37,10 @@ Game_Interpreter.prototype.pluginCommand = function(command, args) {
             case 'pause':
             case 'stop':
                 pause();
+                break;
+
+            case "resume":
+                resume();
         }
     }
 
@@ -59,6 +71,12 @@ function play(filePath) {
     request.send(null);
 }
 
+// 停止・一時停止
 function pause() {
     picoAudio.pause();
+}
+
+// レジューム
+function resume() {
+    picoAudio.play();
 }

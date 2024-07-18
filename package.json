@@ -8,13 +8,13 @@
     "url": "https://github.com/At-sushi/RPGMV_Midi.git"
   },
   "dependencies": {
-    "picoaudio": "^1.1.0"
+    "picoaudio": "^1.1.1"
   },
   "devDependencies": {
     "browserify": "^17.0.0"
   },
   "scripts": {
-    "build": "browserify main.js -o dist/ATS_MidiMapper.js",
+    "build": "browserify main.js -o dist/ATS_Midi.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "At-sushi",
