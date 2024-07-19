@@ -1,5 +1,24 @@
 'use strict';
 
+/*:
+ * @plugindesc MIDI Player
+ * @author At-susbi
+ * 
+ * @help
+ * ■プラグインコマンド一覧
+ * 
+ * ・ATS_Midi play ファイル名.mid
+ * 　MIDIファイルをBGMとして再生します。
+ * 　ファイルはbgmフォルダ以下に格納されている必要があります。
+ * 
+ * ・ATS_Midi pause
+ * ・ATS_Midi stop
+ * 　BGMの再生を停止します。現地点ではどちらのコマンドも同じです。
+ * 
+ * ・ATS_Midi resume
+ * 　停止中のBGMを前回の再生位置から再開します。
+ */
+
 // 初期化
 const PicoAudio = require('picoaudio');
 const picoAudio = new PicoAudio();
@@ -20,7 +39,7 @@ const _setBGMVolume = AudioManager.updateBgmParameters;
 AudioManager.updateBgmParameters = function(value) {
     _setBGMVolume.call(this, value);
 
-    picoAudio.setMasterVolume(AudioManager.bgmVolume / 100);
+    picoAudio.setMasterVolume(AudioManager.masterVolume * (AudioManager.bgmVolume / 100));
 };
 
 // コマンドー
