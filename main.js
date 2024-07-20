@@ -1,14 +1,12 @@
-'use strict';
-
 /*:
- * @plugindesc MIDI Player
- * @author At-susbi
+ * @plugindesc BGMとしてMIDIファイルを使用可能にするプラグインです。
+ * @author at寿司
  * 
  * @help
  * ■プラグインコマンド一覧
  * 
- * ・ATS_Midi play ファイル名.mid
- * 　MIDIファイルをBGMとして再生します。
+ * ・ATS_Midi play ”[ファイル名].mid”
+ * 　指定したMIDIファイルをBGMとして再生します。
  * 　ファイルはbgmフォルダ以下に格納されている必要があります。
  * 
  * ・ATS_Midi pause
@@ -18,6 +16,8 @@
  * ・ATS_Midi resume
  * 　停止中のBGMを前回の再生位置から再開します。
  */
+
+'use strict';
 
 // 初期化
 const PicoAudio = require('picoaudio');
